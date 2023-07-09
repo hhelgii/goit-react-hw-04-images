@@ -43,10 +43,8 @@ export const App = () => {
       try {
         setIsLoading(true);
         const newPictures = await fetchPictures(query, page);
-        // if(!newPictures.every(pic=>pictures.includes(pic))){
-        //   setPictures( [...pictures, ...newPictures]);
-        // }
-        setPictures([...pictures, ...newPictures]);
+        
+        setPictures(prevPictures => [...prevPictures, ...newPictures]);
         if (newPictures.length === 0) {
           setAllPicturesLoaded(true);
         }
